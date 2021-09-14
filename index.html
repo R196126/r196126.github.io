@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js</title>
+</head>
+<body>
+    <header>
+        <nav id="nav"><h4>Background Color Changer</h4></nav>
+    </header>
+    <main>
+        
+            <button id="button">Change background</button>
+        
+    </main>
+    <footer></footer>
+    
+    <script>
+        const hex = [1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+        const button = document.getElementById('button');
+        
+        button.addEventListener("click", function(){
+              
+            var color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += hex[randomIndex()];
+            }
+             
+            document.body.style.backgroundColor = color;
+            
+        });
+
+        function randomIndex(){
+            return Math.floor(Math.random() * hex.length)
+        }
+
+
+    </script>
+</body>
+</html>
