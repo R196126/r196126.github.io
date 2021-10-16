@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D</title>
+</head>
+<body>
+    
+
+    <h1 id="demo"></h1>
+    <script>
+      
+var root = document.getElementById('root');
+var ipArr = [1];
+
+fetch('https://api.ipify.org/?format=json')
+  	.then(results => results.json()) 
+  	.then(data => {
+		console.log(data)
+		var x= [];
+		x.push(data)
+		console.table(x)
+	})
+
+
+//console.log(JSON.stringify(ipArr));
+//ipArr.forEach(item => console.log(item))
+//console.log(x)
+//ipArr.push(2)
+//console.log(x)
+var text = "";
+//const fruits = ["apple", "orange", "cherry"];
+ipArr.forEach(myFunction);
+
+document.getElementById("demo").innerHTML = text;
+ 
+function myFunction(item, index) {
+  text += index + ": " + item + "<br>"; 
+}
+
+
+
+    </script>
+</body>
+</html>
