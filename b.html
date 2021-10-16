@@ -16,7 +16,7 @@
 var root = document.getElementById('root');
 var ipArr = [1];
 
-fetch('https://api.ipify.org/?format=json')
+onload = () => fetch('https://api.ipify.org/?format=json')
   	.then(results => results.json()) 
   	.then(data => {
 		console.log(data)
