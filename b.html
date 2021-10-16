@@ -21,7 +21,7 @@ onload = () => fetch('https://api.ipify.org/?format=json')
   	.then(data => {
 		console.log(data)
 		
-		x.push(data)
+		x.push(data.ip)
 		console.table(x)
 	})
 
