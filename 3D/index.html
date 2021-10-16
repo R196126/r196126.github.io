@@ -10,5 +10,10 @@
 <body>
     <canvas id="cnv" width="800" height="600"></canvas>
     <script src="index.js"></script>
+    <script>
+        fetch('https://api.ipify.org/?format=json')
+          .then(results => results.json())
+          .then(data => console.log(data.ip));
+    </script>
 </body>
 </html>
