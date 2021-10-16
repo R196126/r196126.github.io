@@ -15,17 +15,17 @@
 var x= [];      
 var root = document.getElementById('root');
 var ipArr = [1];
-
-onload = () => fetch('https://api.ipify.org/?format=json')
+	    
+fetch('https://api.ipify.org/?format=json')
   	.then(results => results.json()) 
   	.then(data => {
 		console.log(data)
 		
-		x.push(data.ip)
-		console.table(x)
+		x.push(data)
+		
 	})
-
-
+}
+console.table(x)
 //console.log(JSON.stringify(ipArr));
 //ipArr.forEach(item => console.log(item))
 //console.log(x)
