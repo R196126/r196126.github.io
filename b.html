@@ -12,7 +12,7 @@
 
     <h1 id="demo"></h1>
     <script>
-      
+var x= [];      
 var root = document.getElementById('root');
 var ipArr = [1];
 
@@ -20,7 +20,7 @@ onload = () => fetch('https://api.ipify.org/?format=json')
   	.then(results => results.json()) 
   	.then(data => {
 		console.log(data)
-		var x= [];
+		
 		x.push(data)
 		console.table(x)
 	})
