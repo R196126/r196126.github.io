@@ -11,6 +11,30 @@
 <body>
   <h1>Moje offline PWA</h1>
   <p>Tato aplikace funguje i bez připojení k internetu!</p>
+  <div id="status">Kontrola připojení...</div>
+
+  <script>
+    const statusEl = document.getElementById('status');
+
+    function updateStatus() {
+      if (navigator.onLine) {
+        statusEl.textContent = '✅ Jsi ONLINE';
+        statusEl.classList.add('online');
+        statusEl.classList.remove('offline');
+      } else {
+        statusEl.textContent = '⚠️ Jsi OFFLINE';
+        statusEl.classList.add('offline');
+        statusEl.classList.remove('online');
+      }
+    }
+
+    // Aktualizuj stav při načtení stránky
+    updateStatus();
+
+    // Sleduj změny připojení
+    window.addEventListener('online', updateStatus);
+    window.addEventListener('offline', updateStatus);
+  </script>
   <script src="main.js"></script>
 </body>
 </html>
