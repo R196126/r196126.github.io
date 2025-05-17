@@ -4,3 +4,26 @@ body {
   padding: 2rem;
   background-color: #f0f0f0;
 }
+body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 3rem;
+      background-color: #f9f9f9;
+}
+#status {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  display: inline-block;
+  border-radius: 8px;
+  user-select: none;
+}
+.online {
+  color: #fff;
+  background-color: #4caf50;
+  box-shadow: 0 0 10px #4caf50aa;
+}
+.offline {
+  color: #fff;
+  background-color: #f44336;
+  box-shadow: 0 0 10px #f44336aa;
+}
