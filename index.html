@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List (PWA)</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f4f4f4; }
+    h1 { text-align: center; }
+    input[type="text"] { width: 80%; padding: 0.5rem; }
+    button { padding: 0.5rem 1rem; margin-left: 0.5rem; }
+    ul { list-style-type: none; padding: 0; }
+    li { background: #fff; margin: 0.5rem 0; padding: 0.5rem; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Můj To-Do List</h1>
+  <input type="text" id="newTask" placeholder="Zadej úkol">
+  <button onclick="addTask()">Přidat</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker registrován'))
+        .catch(err => console.error('SW chyba:', err));
+    }
+
+    const taskList = document.getElementById('taskList');
+    const newTaskInput = document.getElementById('newTask');
+
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    renderTasks();
+
+    function addTask() {
+      const text = newTaskInput.value.trim();
+      if (!text) return;
+      tasks.push(text);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      newTaskInput.value = '';
+      renderTasks();
+    }
+
+    function renderTasks() {
+      taskList.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.textContent = task;
+        li.onclick = () => {
+          tasks.splice(index, 1);
+          localStorage.setItem('tasks', JSON.stringify(tasks));
+          renderTasks();
+        };
+        taskList.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
